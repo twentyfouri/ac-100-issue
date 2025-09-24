@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH=/mnt/flash/vienna/lib:/mnt/flash/vienna/lib/vienna:$LD_LIBRARY_PATH
+
+#mount_as_tmpfs /etc
+#/mnt/flash/ac100/add_mdev_rule.sh &
+
+cd /mnt/flash/vienna/drivers/
+sh driver.sh
+# sh /mnt/flash/ac100/sd_mount.sh &
+
+/mnt/flash/ac100/wifi-connect-ota &
+/mnt/flash/ac100/p2p > /dev/null 2>&1 &
+#/mnt/flash/ac100/p2p &
