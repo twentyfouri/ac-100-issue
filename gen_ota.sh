@@ -32,3 +32,27 @@ git checkout "tags/$TAG" -b "$TAG-branch"
 
 echo "完成！"
 
+
+PREFIX=${TAG:0:10}   # 取前 10 個字元
+TARGET_DIR="$(pwd)/$PREFIX"
+
+# 建立目錄
+mkdir -p "$TARGET_DIR"
+
+echo "已建立目錄: $TARGET_DIR"
+
+# 檔案名稱
+FILENAME="ac100-${PREFIX}.tar.xz"
+
+# 建立 list.txt
+cat > "$TARGET_DIR/list.txt" <<EOF
+{ "version":"${PREFIX}",
+  "auto" : false,
+  "whitelist": [],
+  "rootfs" : "",
+  "model":"",
+  "file": "${FILENAME}"
+}
+EOF
+
+echo "已建立 $TARGET_DIR/list.txt"
