@@ -8,3 +8,11 @@ if [ -f /tmp/nand-env ]; then
         /usr/sbin/nandwrite -p /dev/mtd1 /tmp/nand-env
         echo writing env done
 fi
+
+if [ ! -L /mnt/flash/ac100/nef ]; then
+    rm -rf /mnt/flash/ac100/nef
+    ln -s /mnt/flash/vienna/nef /mnt/flash/ac100/nef
+fi
+
+rm /mnt/flash/ac100/p2p-2508221122
+rm /mnt/flash/ac100/kp_firmware_host_stream_app_babycam
